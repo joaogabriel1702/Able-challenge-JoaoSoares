@@ -1,34 +1,20 @@
 package able;
 
+import java.util.Random;
+
 public class Corredor {
     
     private int corredorVaga[];
-    private int qtdVagas;
 
     public Corredor(int qtd) {
-        this.corredorVaga = PreencherVaga();
-        this.qtdVagas = qtd;
+        this.corredorVaga = new int[qtd];
+        Ocupacao();
     }
-    
-    public void printcorredor(){
-        for(int i : corredorVaga){
-            System.out.println(i);
-        }
-    }
-    
-    public int[] PreencherVaga(){
-        int i;
-        int vaga[] = new int [qtdVagas];
-        for(i = 0; i < qtdVagas; i++){
-            vaga[i] = PreenchimentoVaga.ocupacao();
-        }
-        return vaga;
-    }
-    
+     
     public int VagaOcupada(){
         int i, vaga_ocupada = 0;
-        for(i = 0; i < corredorVaga.length; i++){
-            if(corredorVaga[i] == 1){
+        for(i = 0; i < this.corredorVaga.length; i++){
+            if(this.corredorVaga[i] == 1){
                 vaga_ocupada += 1;
             }
         }
@@ -39,6 +25,13 @@ public class Corredor {
         int vaga_disponivel;
         vaga_disponivel = this.corredorVaga.length - VagaOcupada();
         return vaga_disponivel;
+    }
+    
+    public void Ocupacao(){
+        Random gerador = new Random();
+            for(int i = 0; i < this.corredorVaga.length; i++){
+                corredorVaga[i] = gerador.nextInt(2);
+            }
     }
     
 }

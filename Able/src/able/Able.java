@@ -81,7 +81,6 @@ public class Able {
         }
         System.out.println("Digite o corredor desejado: ");
         int corredor_desejado = Scan.nextInt() - 1;
-        corredores_total[corredor_desejado].printcorredor();
         System.out.println("Total de vagas ocupadas no corredor: " + corredores_total[corredor_desejado].VagaOcupada());
     }
     
